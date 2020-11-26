@@ -232,8 +232,26 @@ def mainGame():
 
         if collision_check(enemy_list, player_pos):
             game_over = True
+            endScreen()
+
+        pygame.display.update()
+
+def endScreen():
+    endGame = True
+
+    while endGame:
+        screen.blit(background, (0,0))
+
+        mouse = pygame.mouse.get_pos()
+        clicked = pygame.mouse.get_pressed()
+        pygame.draw.rect(screen, (130,128,128), (300, 450, 200, 50))
+        button1 = myFont.render("", 1, (0,0,0))
+        button2 = myFont.render("", 1, (0,0,0))
+        screen.blit(button1, (100, 450))
+        screen.blit(button2, (450,450))
+        title = myFont2.render("GAME OVER!", 1, (255,255,255))
+        screen.blit(title, (180, 200))
 
         pygame.display.update()
 
 mainMenu()
-mainGame()
